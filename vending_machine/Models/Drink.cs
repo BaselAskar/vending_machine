@@ -67,7 +67,7 @@ namespace vending_machine.Models
                 {
                     if (DateTime.Now <= Expired)
                     {
-                         useTextBuilder.Append($"\nThis drink will be expired {Expired}");
+                         useTextBuilder.Append($"\nThis drink will be expired {Expired?.ToString("yyyy/MM/dd")}");
                     }
                     else
                     {
