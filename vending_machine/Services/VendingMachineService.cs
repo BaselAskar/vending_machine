@@ -13,9 +13,18 @@ namespace vending_machine.Services
 
         public List<int> ValidMoney { get => new List<int> { 1, 5, 10, 20, 50, 100, 500, 1000 }; } 
 
-        public string Details(Product product)
+        public string Details(int productId)
         {
-            return product.Examian;
+            Product? product = VendingData.Products.FirstOrDefault(p => p.Id == productId);
+
+            if (product == null)
+            {
+                throw new Exception("This product is not existed!");
+            }
+
+            return $"{product.Examian} \n" +
+                $"\n" + $"Use: \n" + 
+                $"{product.Use}";
         }
 
         public Dictionary<int, int> EndTransictionals()
@@ -66,7 +75,10 @@ namespace vending_machine.Services
                 throw new Exception("There is not enough money!");
             }
 
-
+            if (product.Expired < DateTime.Now)
+            {
+                throw new Exception("This product has been expired!!!...");
+            }
 
             VendingData.DecreaseAmount(product.Price);
             product.Count--;

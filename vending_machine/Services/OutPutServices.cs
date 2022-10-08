@@ -36,7 +36,7 @@ namespace vending_machine.Services
             Console.WriteLine();
             Console.WriteLine("2. Select Product");
             Console.WriteLine();
-            Console.WriteLine("3. End transictional");
+            Console.WriteLine("3. Return money");
             Console.WriteLine();
 
             char select;
@@ -118,6 +118,7 @@ namespace vending_machine.Services
 
             do
             {
+                Console.WriteLine();
                 Console.WriteLine("Insert ID of product");
                 Console.WriteLine("or insert 'back' to go back");
 
@@ -143,15 +144,50 @@ namespace vending_machine.Services
                     isNumber = int.TryParse(productIdText, out productId);
                 }
 
-                try
+
+                Console.WriteLine();
+                Console.WriteLine("1. buy product");
+                Console.WriteLine();
+                Console.WriteLine("2. Show details");
+                Console.WriteLine();
+
+                char productChoies;
+
+                bool validChoies = false;
+
+                do
                 {
-                    vendingMachine.Purchase(productId);
-                    purchaseIsDone = true;
-                }
-                catch (Exception ex)
-                {
-                    Alert(ex.Message);
-                }
+                    productChoies = Console.ReadKey().KeyChar;
+                    Console.WriteLine();
+
+                    switch (productChoies)
+                    {
+                        case '1':
+                            try
+                            {
+                                validChoies = true;
+                                vendingMachine.Purchase(productId);
+                                purchaseIsDone = true;
+                            }
+                            catch (Exception ex)
+                            {
+                                Alert(ex.Message);
+                                continue;
+                            }
+                            break;
+                        case '2':
+                            validChoies = true;
+                            Console.WriteLine(vendingMachine.Details(productId));
+                            break;
+                        default:
+                            Alert("Wrong choies");
+                            break;
+
+                    }
+
+                } while (!validChoies);
+
+                
 
 
 

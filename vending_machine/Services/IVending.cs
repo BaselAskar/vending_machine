@@ -11,7 +11,7 @@ namespace vending_machine.Services
     {
         Product Purchase(int productId);
         List<string> ShowAll();
-        string Details(Product product);
+        string Details(int productId);
         void InsertMoney(int amount);
         Dictionary<int, int> EndTransictionals();
     }
