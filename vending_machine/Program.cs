@@ -44,45 +44,6 @@ namespace vending_machine
 
             
 
-            //Console.WriteLine("Insert one of these money unit");
-            //Console.WriteLine();
-            //foreach (int unit in vendingMachine.ValidMoney)
-            //{
-            //    Console.Write($"{unit}kr ");
-            //}
-            //Console.WriteLine();
-            //Console.Write("Input: ");
-            //string? amount;
-
-            //bool validInput;
-
-            //do
-            //{
-            //    amount = Console.ReadLine();
-
-            //    try
-            //    {
-            //        vendingMachine.InsertMoney(int.Parse(amount));
-            //        validInput = true;
-            //    }
-            //    catch(Exception ex)
-            //    {
-            //        Console.WriteLine(ex.Message);
-            //        validInput = false;
-            //    }
-
-            //}while(!validInput);
-
-            //Console.Clear();
-
-            //OutputServices.ShowProductsList(ref vendingMachine);
-
-            //Console.WriteLine("Select Id of product");
-            //Console.WriteLine();
-            //Console.WriteLine(VendingData.TotalAmount);
-
-            //string? selectedId = Console.ReadLine();
-
         }
     }
 }
