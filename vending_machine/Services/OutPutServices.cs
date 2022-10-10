@@ -24,7 +24,7 @@ namespace vending_machine.Services
                 Console.WriteLine("-----------------------");
             }
             Console.WriteLine();
-            Console.WriteLine($"Total input: {VendingData.TotalAmount}");
+            Console.WriteLine($"Total input: {vendingMachine}");
             Console.WriteLine();
 
         }

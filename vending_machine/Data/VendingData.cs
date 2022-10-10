@@ -9,7 +9,7 @@ namespace vending_machine.Data
 {
     public class VendingData
     {
-        private static List<Product> products = new List<Product>
+        private List<Product> products = new List<Product>
         {
             new Drink("Lemon juice",25.99,DateTime.Parse("2023-01-15"),15,Test.Sour,DrinkType.Cold,465.53,true),
             new Drink("Tea",15.55,DateTime.Parse("2022-12-05"),3,Test.Sweet,DrinkType.Hot,152.3,true),
@@ -22,27 +22,27 @@ namespace vending_machine.Data
 
         };
 
-        public static List<Product> Products { get => products; }
+        public List<Product> Products { get => products; }
 
         
 
 
-        private static double totalAmount = 0;
+        private double totalAmount = 0;
 
-        public static double TotalAmount { get => totalAmount; }
+        public double TotalAmount { get => totalAmount; }
 
-        public static void AddAmmount(double amount)
+        public void AddAmmount(double amount)
         {
             totalAmount += amount;
         }
 
-        public static void DecreaseAmount(double amount)
+        public void DecreaseAmount(double amount)
         {
             totalAmount -= amount;
         }
 
 
-        public static void ResetAmount()
+        public void ResetAmount()
         {
             totalAmount = 0;
         }

@@ -9,7 +9,9 @@ namespace vending_machine
         static void Main(string[] args)
         {
 
-            VendingMachineService vendingMachine = new VendingMachineService();
+            VendingData vendingData = new VendingData();
+            VendingMachineService vendingMachine = new VendingMachineService(vendingData);
+
 
             bool finish = false;
 
