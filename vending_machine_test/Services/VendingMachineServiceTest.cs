@@ -23,7 +23,7 @@ namespace vending_machine_test.Services
 
         public void Dispose()
         {
-            
+            VendingMachine.EndTransictionals();
         }
     }
 
@@ -96,7 +96,7 @@ namespace vending_machine_test.Services
         {
             string expected = "This product is not existed!";
 
-            Exception exception = Assert.Throws<ArgumentException>(() => vendingMachine.Purchase(productId));
+            Exception exception = Assert.Throws<Exception>(() => vendingMachine.Purchase(productId));
 
             Assert.Equal(expected, exception.Message);
         }
@@ -105,7 +105,10 @@ namespace vending_machine_test.Services
         [Fact]
         public void Purchase_NotExistedProduct_Test()
         {
+
             string expected = "This product is not existed right now...!";
+
+            vendingMachine.InsertMoney(1000);
 
             Exception exception = Assert.Throws<Exception>(() => vendingMachine.Purchase(5));
 
@@ -116,7 +119,9 @@ namespace vending_machine_test.Services
         [Fact]
         public void Puchase_NotEnoughMoney_Test()
         {
-            string expected = "This product is not existed right now...!";
+            string expected = "There is not enough money!";
+
+            vendingMachine.InsertMoney(20);
 
             Exception ex = Assert.Throws<Exception>(() => vendingMachine.Purchase(1));
 
@@ -128,6 +133,8 @@ namespace vending_machine_test.Services
         [Fact]
         public void Puchase_ExpiredProduct_Test()
         {
+            vendingMachine.InsertMoney(1000);
+
             string expected = "This product has been expired!!!...";
 
             Exception ex = Assert.Throws<Exception>(() => vendingMachine.Purchase(3));
